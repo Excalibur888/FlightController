@@ -31,6 +31,7 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "MPU6050.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -58,6 +59,14 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 
 /* USER CODE BEGIN Private defines */
+#define MPU6050_SDA_Pin GPIO_PIN_7
+#define MPU6050_SDA_GPIO_Port GPIOB
+#define MPU6050_SCL GPIO_PIN_6
+#define MPU6050_SCL_GPIO_Port GPIOB
+
+#define SD_CS_Pin GPIO_PIN_4
+#define SD_CS_GPIO_Port GPIOA
+
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

@@ -109,31 +109,36 @@ int main(void)
   /* USER CODE BEGIN 2 */
   int i = 0;
 
+  MPU6050 mpu = { .i2c = &hi2c1, .i2c_address = MPU6050_DEFAULT_ADDRESS};
+  float accel[3];
   char buffer[128];
   FIL fil;
   FATFS *pfs;
   FATFS FatFs;
   DWORD fre_clust;
   uint32_t totalSpace, freeSpace;
-  if (f_mount(FatFs, "", 1) != FR_OK) return 1;
+  mpu_wakeup(&mpu);
+  mpu_set_accel(&mpu, ACCEL_16G);
+  if (f_mount(&FatFs, "", 1) != FR_OK) return 1;
   f_getfree("", &fre_clust, &pfs);
   totalSpace = (uint32_t)((pfs->n_fatent - 2) * pfs->csize * 0.5);
   freeSpace = (uint32_t)(fre_clust * pfs->csize * 0.5);
-  if(f_open(fil, "data.csv", FA_WRITE | FA_READ | FA_CREATE_ALWAYS) != FR_OK) return 1;
+  if(f_open(&fil, "data.csv", FA_WRITE | FA_READ | FA_CREATE_ALWAYS) != FR_OK) return 1;
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while (1)
+  while (i < 100)
   {
-	  //sprintf(buffer, "%f;%f;%f\n", accel[0], accel[1], accel[2]);
-	  //f_puts(buffer, &fil);
+	  mpu_get_accel(&mpu, &accel);
+	  sprintf(buffer, "%f;%f;%f\n", accel[0], accel[1], accel[2]);
+	  f_puts(buffer, &fil);
 	  i++;
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
   }
-  if(f_close(fil) != FR_OK) return 1;
+  if(f_close(&fil) != FR_OK) return 1;
   if(f_mount(NULL, "", 0) != FR_OK) return 1;
   /* USER CODE END 3 */
 }
