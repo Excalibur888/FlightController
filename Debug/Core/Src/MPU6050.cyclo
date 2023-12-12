@@ -1,0 +1,8 @@
+../Core/Src/MPU6050.c:21:9:get_accel_range	5
+../Core/Src/MPU6050.c:39:6:mpu_wakeup	1
+../Core/Src/MPU6050.c:47:6:mpu_set_accel	1
+../Core/Src/MPU6050.c:56:6:mpu_get_accelX	1
+../Core/Src/MPU6050.c:67:6:mpu_get_accelY	1
+../Core/Src/MPU6050.c:78:6:mpu_get_accelZ	1
+../Core/Src/MPU6050.c:89:6:mpu_get_accel	1
+../Core/Src/MPU6050.c:95:6:mpu_send_cmd	17

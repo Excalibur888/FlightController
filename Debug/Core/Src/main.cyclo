@@ -1,0 +1,11 @@
+../Core/Src/main.c:81:5:main	2
+../Core/Src/main.c:155:6:SystemClock_Config	3
+../Core/Src/main.c:197:13:MX_I2C1_Init	2
+../Core/Src/main.c:231:13:MX_SPI1_Init	2
+../Core/Src/main.c:269:13:MX_SPI2_Init	2
+../Core/Src/main.c:307:13:MX_GPIO_Init	1
+../Core/Src/main.c:343:5:sd_mount_card	2
+../Core/Src/main.c:363:5:sd_open_file	2
+../Core/Src/main.c:370:5:sd_close_file	2
+../Core/Src/main.c:375:5:sd_unmount_card	2
+../Core/Src/main.c:385:6:Error_Handler	1

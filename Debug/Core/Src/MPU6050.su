@@ -1,0 +1,8 @@
+../Core/Src/MPU6050.c:21:9:get_accel_range	4	static
+../Core/Src/MPU6050.c:39:6:mpu_wakeup	32	static
+../Core/Src/MPU6050.c:47:6:mpu_set_accel	32	static
+../Core/Src/MPU6050.c:56:6:mpu_get_accelX	40	static
+../Core/Src/MPU6050.c:67:6:mpu_get_accelY	40	static
+../Core/Src/MPU6050.c:78:6:mpu_get_accelZ	40	static
+../Core/Src/MPU6050.c:89:6:mpu_get_accel	16	static
+../Core/Src/MPU6050.c:95:6:mpu_send_cmd	64	static

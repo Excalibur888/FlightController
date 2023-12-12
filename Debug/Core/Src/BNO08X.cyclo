@@ -1,0 +1,2 @@
+../Core/Src/BNO08X.c:13:6:bno_send_cmd	1
+../Core/Src/BNO08X.c:21:6:bno_reset	1
