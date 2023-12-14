@@ -33,10 +33,6 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define ACCEL_2G 0
-#define ACCEL_4G 1
-#define ACCEL_8G 2
-#define ACCEL_16G 3
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -69,9 +65,6 @@ int sd_unmount_card();
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-uint8_t tx_buffer[32];
-uint8_t rx_buffer[256];
-uint8_t rx_len;
 /* USER CODE END 0 */
 
 /**
@@ -88,6 +81,7 @@ int main(void)
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
+
 
   /* USER CODE BEGIN Init */
 
@@ -107,34 +101,22 @@ int main(void)
   MX_FATFS_Init();
   MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
-  int i = 0;
-
-  char buffer[128];
-  FIL fil;
-  FATFS *pfs;
-  FATFS FatFs;
-  DWORD fre_clust;
-  uint32_t totalSpace, freeSpace;
-  if (f_mount(FatFs, "", 1) != FR_OK) return 1;
-  f_getfree("", &fre_clust, &pfs);
-  totalSpace = (uint32_t)((pfs->n_fatent - 2) * pfs->csize * 0.5);
-  freeSpace = (uint32_t)(fre_clust * pfs->csize * 0.5);
-  if(f_open(fil, "data.csv", FA_WRITE | FA_READ | FA_CREATE_ALWAYS) != FR_OK) return 1;
+  BNO08x bno = {
+	  .spi 			= &hspi2,
+	  .reset_port	= BNO_RESET_GPIO_Port,		.reset_pin	= BNO_RESET_Pin,
+	  .int_port		= BNO_INT_GPIO_Port,		.int_pin	= BNO_INT_Pin,
+	  .cs_port		= BNO_CS_GPIO_Port,			.cs_pin		= BNO_CS_Pin
+  };
+  bno_reset(&bno);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  //sprintf(buffer, "%f;%f;%f\n", accel[0], accel[1], accel[2]);
-	  //f_puts(buffer, &fil);
-	  i++;
     /* USER CODE END WHILE */
-
     /* USER CODE BEGIN 3 */
   }
-  if(f_close(fil) != FR_OK) return 1;
-  if(f_mount(NULL, "", 0) != FR_OK) return 1;
   /* USER CODE END 3 */
 }
 

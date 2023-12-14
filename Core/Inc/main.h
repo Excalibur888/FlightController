@@ -31,6 +31,7 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "BNO08x.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -58,6 +59,12 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 
 /* USER CODE BEGIN Private defines */
+#define BNO_RESET_GPIO_Port GPIOA
+#define BNO_RESET_Pin GPIO_PIN_8
+#define BNO_CS_GPIO_Port GPIOA
+#define BNO_CS_Pin GPIO_PIN_9
+#define BNO_INT_GPIO_Port GPIOA
+#define BNO_INT_Pin GPIO_PIN_10
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus
